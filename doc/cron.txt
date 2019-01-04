@@ -1,0 +1,348 @@
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/local/php/bin
+# from 2015-06-24
+
+##============================重要的定时任务=========================================
+##新版撮合系统接收
+16 09 * * 1-5 ~/cron/cron_v2/protected/yiic Plan OrderSub > /dev/null &
+16 09 * * 1-5 ~/cron/cron_v2/protected/yiic Plan OrderSubBack > /dev/null &
+###统一把没有提交到撮合系统的单子提交上去
+30 09 * * 1-5 ~/cron/cron_v2/protected/commands/shell/startCron.sh Plan SubmitOrder 5002 > /dev/null
+#交易日同步 更新来自 quotesdb 2015-07-31 by songyao
+0 10 1 * * ~/cron/cron_v2/protected/commands/shell/syncTradeDay.sh >/dev/null
+#消息推送
+
+
+
+##===========================基础维护相关 start=======================================================
+#每天0点1分钟日志清理
+1 0 * * *  ~/cron/cron_v2/protected/commands/shell/commonClearLog.sh > /dev/null
+1 0 * * *  ~/cron/cron_v2/protected/commands/shell/commonClearFile.sh > /dev/null
+#9903 检查错误日志
+* * * * *  ~/cron/cron_v2/protected/commands/shell/commonCheckErrLog.sh > /dev/null
+#检查定时任务执行情况
+*/30 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh common checkCron 9902 > /dev/null
+##===========================基础维护相关 end=========================================================
+
+
+
+
+##===========================理财师相关统计 start=====================================================
+#每天0点5分钟统计理财师活跃度  add by weiguang3 2015-07-24
+5 0 * * *  ~/cron/cron_v2/protected/commands/shell/plannerStatActivity.sh > /dev/null
+#每天0点15分钟统计理财师影响力 add by weiguang3 2015-07-24
+15 0 * * *  ~/cron/cron_v2/protected/commands/shell/plannerStatInfluence.sh > /dev/null
+
+#1004 更新理财师扩展表的pkg_comment_num字段
+0 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner CommentNum 1004 > /dev/null
+#1005 最近30天内回答问题最多的理财师
+15 0 * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner mostAskOf30Days 1005 > /dev/null
+#1006 理财师最近回答30天内的响应时间
+1 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner questionRespTime 1006 > /dev/null
+#1007 不活跃的理财师关掉问答和限时特惠
+0 1 * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner askClose 1007 > /dev/null
+#1008 更新推荐理财师
+30 0 * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner plannerRecommend 1008 > /dev/null
+#1010 自动解冻冻结到期的理财师
+0 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner UnfreezePlanner 1010 > /dev/null
+#1011 统计理财师发的观点数量
+*/30 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner StatPlannerViewNum 1011 > /dev/null
+#1012 理财师评级 计划
+0 23 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh planner gradePlan 1012 > /dev/null
+#1013 理财师评级  观点包
+0 22 1,16 * * ~/cron/cron_v2/protected/commands/shell/startCron.sh planner gradePackage 1013 > /dev/null
+#1030 理财师客户分组数据
+0 3 * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner customerGroup 1030 --type=day > /dev/null
+#1031 理财师客户分组消息推送统计
+0 4 * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner customerMsgPush 1031 > /dev/null
+#1032 理财师客户分组消息推送次数
+30 0 * * 1  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner customerMsgPushTimes 1032 > /dev/null
+#圈子直播公告开始通知
+#* * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner circleLiveNoticeStart 1050 > /dev/null
+#取30日内发表基金类观点最多的前10个理财师，每个理财师取（30日内发布的观点中）阅读量最多的一条观点
+*/5 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh planner MostViewFundOf30Days 1040 > /dev/null
+#取30日内回答基金类问题最多的前10个理财师，每个理财师取（30日回答问题中）解锁数最多的问题
+*/5 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh planner MostAskFundOf30Days 1041 > /dev/null
+#理财师排行榜Top50+新人榜
+0 1 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh planner plannerRank 8012 > /dev/null
+#理财师名片折线图计划数据统计
+0 16 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh planner plannerCardChartData 8013 > /dev/null
+##1099 每个小时跑一次，包括观点热，回答快，计划赚，粉丝多，同城的统计信息
+0 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh planner plannerList 1099 > /dev/null
+##===========================理财师相关统计 end======================================================
+
+
+
+
+##===========================计划相关 start==========================================================
+# 更新机构投顾大赛排行榜 5分钟执行一次
+#*/5 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh planner matchRank 8401 > /dev/null
+
+#5006 更新计划的沪深300增长率
+*/5 9-15 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh plan  dailyK 5006 > /dev/null
+
+#计划股票的分红送股处理,一天一次,不能重复运行
+30 1 * * 1-5 ~/cron/cron_v2/protected/commands/shell/startCron.sh Plan ShareStock 5003 > /dev/null
+
+#计算计划交易水平透视相关数据
+28 16 * * 1-5 ~/cron/cron_v2/protected/commands/shell/startCron.sh Plan PlanAssess 5004 > /dev/null
+#计算理财师的计划相关指标
+32 16 * * 1-5 ~/cron/cron_v2/protected/commands/shell/startCron.sh Plan PlannerExt 5005 > /dev/null
+#计算计划的状态和运行剩余时间
+1 0 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh Plan UpdStatus 5007 > /dev/null
+#生成计划的搜索数据
+*/10 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh Plan AddSearch 5008 > /dev/null
+#清理未交的委托单子 计算计划收益市值持仓比收益历史
+05 15 * * 1-5 ~/cron/cron_v2/protected/commands/shell/startCron.sh Plan Income 5009 > /usr/home/finance/error.txt
+##更新计划表的一些字段
+33 16 * * 1-5 ~/cron/cron_v2/protected/commands/shell/startCron.sh Plan UptPlanField 5011 > /dev/null
+#5101 计划开始提醒
+0 9 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh plan  planStartMessage 5101 > /dev/null
+#5102 计划结束提醒
+* 9-15 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh plan  planEndMessage 5102 > /dev/null
+#5014 修改订阅计划的退款状态
+1 0 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh plan PlanRefundStatus 5014 > /dev/null
+#5015 体验计划自动过期
+* */1 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh plan planSubscriptionExpire 5015 > /dev/null
+#5017 平台体验卡
+59 23 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh plan PtTyk  5017 > /dev/null
+#发送每日收益播报,必须要比交易水平透视相关数据计算要晚
+#40 16 * * * $LCS_ORG_CRON_PATH/protected/commands/shell/startCron.sh message partnerdailyreport 1315 > /dev/null
+#王力慧订阅观点包自动加计划权限
+1 11,21 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh order autoSubByOrder 8106 > /dev/null
+##===========================计划相关 end============================================================
+
+
+
+
+##===========================问答相关 start==========================================================
+#1304 付费问题短信通知理财师  每5分钟和一天
+*/5 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh message payQuestionSmsType1 1304 > /dev/null
+30 17 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh message payQuestionSmsType0 1304 > /dev/null
+#清理过了折扣时间后的提问数量 1101 add by weiguang3 2015-07-16
+* * * * *  ~/cron/cron_v2/protected/commands/shell/askClearDiscountQNum.sh > /dev/null
+
+#清理抢答超时的记录 add by weiguang3 2015-09-17
+* * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh ask clearGrabTimeout 1102 > /dev/null
+
+#确认抢答答案 add by weiguang3 2015-09-17
+*/10 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh ask confirmGrabAnswer 1103 > /dev/null
+
+#抢答未回答置顶  add by weiguang3 2015-09-17
+* * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh ask grabNoAnswerTimeout 1104 > /dev/null
+
+#计算折扣中的理财师  add by weiguang3 2015-09-17
+* * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh ask discountPlanner 1105 > /dev/null
+
+#问题超时未回答处理   add by weiguang3 2015-09-17
+*/10 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh ask questionTimeout 1106 > /dev/null
+
+#回答的问题自动评价  add by weiguang3 2015-09-17
+*/10 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh ask questionAutoScore 1107 > /dev/null
+
+#修改理财师持有免费问题数量  add by weiguang3 2015-09-17
+1 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh ask updateHoldQNum 1108 > /dev/null
+#1110 清理已删除的抢答问题 run in every hour
+0 */1 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh ask ClearGrabDeleted 1110 > /dev/null
+##===========================问答相关 end===========================================================
+
+
+
+
+##===========================观点包/观点 start=======================================================
+#1201 修复lcs_package.comment_num
+*/30 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh view UpdatePkgComment 1201 > /dev/null
+#1202 从redis中取数据入到临时的数据库 run in every minute
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh view RecordClick 1202 > /dev/null
+#1203 24小时热门 run in every half hour
+0,30 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh view SumClick 1203 > /dev/null
+#1204 24小时点击数据清理
+10 1 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh view clearClick 1204 > /dev/null
+#1205 update lcs_view.view_num run in every quarter.
+*/15 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh view ViewClick 1205 > /dev/null
+#1206 统计两个月（60）天内观点包的观点数
+0 2 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh view ViewNumOf2Month 1206 > /dev/null
+#1207 检测视频观点并发布
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh view CheckVideoView 1207 > /dev/null
+#1302 5天未发布收费观点的警告短信
+0 9 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh message noViewsWarning 1302 > /dev/null
+#1310 发送订阅观点包到期提醒
+*/5 * * * *   ~/cron/cron_v2/protected/commands/shell/startCron.sh message  PkgExpire 1310 > /dev/null
+#解析微观点内容
+*/1 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh dynamic parseContent 14201
+##===========================观点包/观点 end=========================================================
+
+
+
+
+##===========================圈子相关 start=========================================================
+#定时刷新圈子推荐顺序
+*/10 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh circle ShuffleRecommendCircle  10001 > /dev/null
+#圈子用户信息
+*/1 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh circle UpdateCircleUser 10002 > /dev/null
+#圈子短信统计
+1 0 * * * ~/cron/cron_v2/protected/yiii teststat xindaDataStatMail > /dev/null
+##===========================圈子相关 end============================================================
+
+
+
+
+##==============================理财师直播===========================================================
+#更新理财师直播状态
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh video ChangeLiveStatus 2002 >/dev/null
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh video StartLive 2003 > /dev/null
+##=============================理财师直播end=========================================================
+
+
+
+
+##=============================短信接口=================================================
+#短信综合处理定时任务，包括快速短信发送和普通短信发送进程
+* * * * * ~/cron/cron_v2/protected/commands/shell/smsMonitor.sh > /dev/null
+#短信延迟发送定时任务，每分钟检测一次
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh sms SendDelaySms 7702 > /dev/null
+#云片短信定时任务 换机器执行需要到云片后台添加ip白名单
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh sendSms sendSms 1318
+##=============================短信接口end==============================================
+
+
+
+##===========================其它各类 start=========================================================
+#8003 统计用户自选
+*/15 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh stat statHotStocks 8003 > /dev/null
+#信达投顾数据统计
+1 0 * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh teststat xindaDataStatMail 0 > /dev/null
+#1003 新浪首页推荐理财师
+#*/10 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh planner sinaIdxRcmdPlanner 1003 > /dev/null
+#4001 新说说删除
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh newComment  deleteComment 4001 > /dev/null
+#1503 每5分钟更新昵称
+#*/5 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh user  changeNotice 1503 > /dev/null
+
+#1901  更新微信公众平台TOKEN
+*/5 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh weiXin updatePFToken 1901 > /dev/null
+
+#1401 每分钟更新弹框引导时间数据
+*/1 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh client ClientGuideCycleHandle 1401 > /dev/null
+
+#3001 更新用户过期优惠券
+0 0 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh Coupon UpdateExpiredCoupon 3001 > /dev/null
+#3002 更新优惠券剩余可领取数量
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh coupon couponAmountLeft 3002 > /dev/null
+#8102 导入股票代码
+30 07 * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh syncCJData importSymbol  8102 > /dev/null
+40 07 * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh syncCJData importAskSymbol  8102 > /dev/null
+#8107推送用户自选股信息到上海
+*/20 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh syncCJData PushUserStock 8107 > /dev/null
+
+#8104推送到财经newjs 新
+*/3 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh syncCJData newJsInfoOfSymbol 8104 > /dev/null
+#8105生成搜索的观点和问答数据并且推送
+*/3 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh syncCJData searchData 8105 > /dev/null
+#8200生成搜索的观点和问答数据并且推送
+0 1 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh order rechargeIncr 8200 > /dev/null
+5 1 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh order consumerIncr 8200 > /dev/null
+10 1 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh order refundIncr 8200 > /dev/null
+15 1 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh order projectIncr 8200 > /dev/null
+
+#stat and send email at 2015-07-03 by songyao
+#30 23 * * 0 ~/cron/cron_v2/protected/commands/shell/statUser.sh >/dev/null
+#stat and send email at 2015-07-08 by songyao
+0 12 * * * ~/cron/cron_v2/protected/commands/shell/statDaily.sh >/dev/null
+
+#更新微博访问accesstoken
+0 */1 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh weibo updateWBToken 11001 > /dev/null &
+
+#存储日志情况，暂时在25上
+#* * * * * ~/cron/cron_v2/protected/commands/shell/accessLog.sh > /dev/null
+#统计日志信息，暂时在25上
+#30 1 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh stat statisticlog 7801 > /dev/null
+
+##第三方消息推送（国海）
+* * * * * ~/cron/cron_v2/protected/commands/shell/monitorThirdPartyMsgQueueHandler.sh  > /dev/null
+##信达数据同步，每天下午导出理财师表结构
+#0 16 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh dump dumpLicaishi 1101 > /dev/null
+##信达数据同步，每天下午导出理财师表结构
+#30 16 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh dump dumpLicaishiComment 1101 > /dev/null
+#1501 每天3点重新评估用户消费等级
+0 3 * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh user rankingEvaluate 1501 > /dev/null
+#抓取财经7*24小时新闻
+*/1 * * * *  ~/cron/cron_v2/protected/commands/shell/getGlobalnews.sh  > /dev/null
+#热葫芦回调
+*/1 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh common rehuluCallBack 9904 > /dev/null
+#微信发送模板消息
+#0 17 * * *  ~/cron/cron_v2/protected/yiic message pushWeixinNotice --msg_type=23
+#导入股票内码信息
+0 */2 * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh syncStockBase syncStock 13001 > /dev/null
+#投票活动-定时获取理财师的人气值
+*/10 * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh ActionVote Calculate 13201 > /dev/null
+#同步用户及理财师到CRM
+*/1 * * * * ~/cron/cron_v2/protected/commands/shell/syncUser2CRM.sh > /dev/null
+#统计用户投票
+*/5 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh actionvote voteCount 13202 > /dev/null
+#IM与CRM数据同步
+*/1 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh syncimcrm syncim 12306 > /dev/null
+#导入股票板块代码
+#0 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh stockplate import 14101
+#异步删除缓存
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh cache deleteCache 15001 > /dev/null
+##===========================其它各类 end===========================================================
+
+
+
+##===========================支付订单相关任务=========================================
+*/5 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh Order CloseOrders 8301 > /dev/null
+
+*/2 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh Order Repair 8302 > /dev/null
+#8001 牛币充值与消费对账
+0 5 * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh checkAccount sumAccount 8001 > /dev/null
+#8002 微博支付流水对账
+0 */6 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh checkAccount checkWeiboPay 8002 > /dev/null
+##===========================支付相关任务end==========================================
+
+
+
+##============================各类消息通知===========================================
+#1014 每天定时给理财师发送  计划和观点包 新评价通知
+0 16 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh planner gradeCommentToPlanner 1014 > /dev/null
+#1015 给用户发送可以评价的通知
+15 16 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh planner gradeCommentToUser 1015 > /dev/null
+#1016 给用户发送可以评价的通知
+30 23 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh planner gradePercent 1016 > /dev/null
+#1301 运营推送定时push消息处理
+* * * * *  ~/cron/cron_v2/protected/commands/shell/startCron.sh message OperateNotice 1301 > /dev/null
+#1303 优惠劵即将过期提醒  提前一天10点通知
+0 10 * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh message couponExpire 1303 > /dev/null
+#1305 1307  1308 通知队列处理 新浪博客推送  微信消息通知
+* * * * *  ~/cron/cron_v2/protected/commands/shell/monitorMsgQueueHandler.sh > /dev/null
+#1306 检查微信发送失败的消息重新发送
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh message weiXinMessagePushFail 1306 > /dev/null
+#1320 向上海大数据推荐圈子事件信息
+*/10 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh message CircleEventQueue 1320 > /dev/null
+#1321 推送微信模板消息
+*/1 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh message pushWeixinNotice 1321 > /dev/null
+##===========================各类消息通知============================================
+
+
+
+##==============================新财讯===============================================
+#更新新财讯观点
+*/1 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh view getView 1209 > /dev/null
+#推送理财师观点到新财讯
+*/1 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh view pushView 1208 > /dev/null
+#更新专题
+*/1 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh view GetViewZhuanti 1210 > /dev/null
+#更新新闻
+*/1 * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh new getnew 1601 > /dev/null
+##==============================新财讯====================
+
+##=====================微信权限===========================
+#异步更新微信权限
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh syncUserAuth syncauth 1998
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh syncUserAuth syncMarket 1996
+##========================================================
+##=====================智选股crm===========================
+#智选股crm同步
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh Investment buyNotice 1901
+* * * * * ~/cron/cron_v2/protected/commands/shell/startCron.sh Investment changNotice 1902
+##========================================================
+

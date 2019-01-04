@@ -1,0 +1,69 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:          payment
+# Required-Start:    $remote_fs $network
+# Required-Stop:     $remote_fs $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts payment
+# Description:       this script starts and stops the payment gateway daemon
+### END INIT INFO
+
+PAYMENT_PATH=/mnt/d/lajp-10.05-sadk
+SERVICE_PORT=21230
+CHARSET=UTF-8
+
+getPid()
+{
+    PID=`/bin/ps axu|grep classpath|grep PHPKit|awk '{print $2}'`
+    echo $PID
+}
+
+case "$1" in
+        start)
+                PID=`getPid`
+                if [ -n "$PID" ]; then
+                    echo "[$PID]Payment gateway is running"
+                    exit 1
+                fi
+                echo -n "Starting Payment gateway......"
+                classpath=.
+                for file in $PAYMENT_PATH/lib/*.jar; 
+                    do classpath=$classpath:$file; 
+                done
+                export SERVICE_PORT=$SERVICE_PORT
+                export CHARSET=$CHARSET
+                nohup java -classpath $classpath lajpsocket.PhpJava > $PAYMENT_PATH/payment.log 2>&1 &
+                echo " Done"
+                exit 0
+        ;;
+        stop)
+                PID=`getPid`
+                if [ -z "$PID" ]; then
+                    echo "Payment gateway is not running"
+                    exit 1
+                fi
+                echo -n "Shutting down Payment gateway......"
+                kill -9 $PID
+                echo " Done"
+                exit 0
+        ;;
+        restart)
+                $0 stop
+                $0 start
+                exit 0
+        ;;
+        status)
+                PID=`getPid`
+                if [ -n "$PID" ]; then
+                    echo "[$PID]Payment gateway is running"
+                else
+                    echo "Payment gateway is not running"
+                fi
+        ;;
+        *)
+                echo "Usage: $0 {start|stop|restart|status}"
+                exit 1
+        ;;
+esac

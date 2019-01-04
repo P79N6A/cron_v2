@@ -1,0 +1,203 @@
+[2017-12-21 10:43:20.503][ERROR][Thread-7][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 8 common frames omitted
+[2017-12-21 10:48:54.666][ERROR][Thread-8][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 8 common frames omitted
+[2017-12-21 10:49:04.539][ERROR][Thread-9][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 8 common frames omitted
+[2017-12-21 10:49:09.294][ERROR][Thread-10][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 8 common frames omitted
+[2017-12-21 10:49:10.624][ERROR][Thread-11][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 8 common frames omitted
+[2017-12-21 10:55:02.347][ERROR][Thread-13][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 8 common frames omitted
+[2017-12-21 10:59:23.887][ERROR][Thread-14][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 8 common frames omitted
+[2017-12-21 10:59:47.522][ERROR][Thread-15][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 8 common frames omitted
+[2017-12-21 11:00:34.890][ERROR][Thread-16][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 7 common frames omitted
+[2017-12-21 11:01:42.092][ERROR][Thread-17][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 7 common frames omitted
+[2017-12-21 11:02:00.677][ERROR][Thread-18][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 7 common frames omitted
+[2017-12-21 11:02:30.110][ERROR][Thread-19][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 7 common frames omitted
+[2017-12-21 11:15:04.560][ERROR][Thread-20][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 7 common frames omitted
+[2017-12-21 11:16:01.825][ERROR][Thread-21][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 7 common frames omitted
+[2017-12-21 11:16:03.039][ERROR][Thread-22][cfca.sadk.api.BaseKit] 03
+cfca.sadk.algorithm.common.PKIException: 错误码：850604  错误信息：解析PKCS7签名数据包失败(cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence)
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:235) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.algorithm.common.PKCS7SignedData.loadBase64(PKCS7SignedData.java:215) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.util.Signature.p7VerifyMessageAttach(Signature.java:611) ~[SADK-3.2.1.3.jar:na]
+	at cfca.sadk.api.SignatureKit.P7VerifyMessageAttach(SignatureKit.java:318) ~[SADK-PHPKit-3.0.0.1.jar:na]
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at lajpsocket.SingleThread.run(SingleThread.java:242) [lajp-10.05.jar:na]
+Caused by: java.lang.ClassCastException: cfca.sadk.org.bouncycastle.asn1.DERApplicationSpecific cannot be cast to cfca.sadk.org.bouncycastle.asn1.ASN1Sequence
+	at cfca.sadk.algorithm.common.PKCS7SignedData.load(PKCS7SignedData.java:229) ~[SADK-3.2.1.3.jar:na]
+	... 7 common frames omitted

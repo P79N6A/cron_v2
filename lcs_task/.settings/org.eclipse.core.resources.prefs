@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//lcs_task/__init__.py=utf-8
+encoding//lcs_task/config/__init__.py=utf-8
+encoding//lcs_task/db/__init__.py=utf-8
+encoding//lcs_task/db/mysql.py=utf-8
+encoding//lcs_task/order/CloseExpireOrder.py=utf-8
+encoding//lcs_task/order_task.py=utf-8
+encoding//lcs_task/plan_task.py=utf-8
+encoding//lcs_task/view_task.py=utf-8

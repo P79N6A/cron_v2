@@ -1,0 +1,24 @@
+#coding:utf-8
+
+DBHOST_W = "10.55.30.35"
+DBPORT_W = 3306
+DBUSER_W = "licaishi"
+DBPWD_W = "123456"
+DBNAME_W = "licaishi"
+DBCHAR_W = "utf8"
+
+
+DBHOST_R = "10.55.30.35"
+DBPORT_R = 3306
+DBUSER_R = "licaishi"
+DBPWD_R = "123456"
+DBNAME_R = "licaishi"
+DBCHAR_R = "utf8"
+
+REDIS_HOST_W = '10.55.30.35'
+REDIS_PROT_W = 6379
+
+REDIS_HOST_R = '10.55.30.35'
+REDIS_PROT_R = 6379
+
+INNER_SIGN_KEY = '5ab4bdacb920a8c1e90f37ad2920013a'
